@@ -6,6 +6,8 @@ use App\Filament\Resources\AccountsResource\Pages;
 use App\Filament\Resources\AccountsResource\RelationManagers;
 use App\Models\Accounts;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
@@ -17,17 +19,32 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AccountsResource extends Resource
 {
-    use Translatable;
 
     protected static ?string $model = Accounts::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'اشخاص';
+
+    protected static ?string $navigationIcon = 'heroicon-o-user';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                TextInput::make('name')
+                    ->required()
+                    ->maxLength(255)
+                    ->label(__('name')),
+                Select::make('type')
+                    ->multiple()
+                    ->options([
+                        'مشتری' => 'مشتری',
+                        'تولید کننده' => 'تولید کننده',
+                        'کارمند' => 'کارمند',
+                        'صاحبان سهام' => 'صاحبان سهام',
+
+                    ])
+                    ->required()
+                    ->label(__('type'))
             ]);
     }
 
@@ -35,8 +52,10 @@ class AccountsResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name'),
-                TextColumn::make('type'),
+                TextColumn::make('name')
+                    ->label(__('name')),
+                TextColumn::make('type')
+                    ->label(__('type')),
             ])
             ->filters([
                 //

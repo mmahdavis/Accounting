@@ -10,13 +10,4 @@ class CreateAccounts extends CreateRecord
 {
     protected static string $resource = AccountsResource::class;
 
-    use CreateRecord\Concerns\Translatable;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\LocaleSwitcher::make(),
-            // ...
-        ];
-    }
 }

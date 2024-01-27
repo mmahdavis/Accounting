@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Exports\TransactionExporter;
 use App\Filament\Resources\TransactionResource\Pages;
 use App\Filament\Resources\TransactionResource\RelationManagers;
+use App\Filament\Resources\TransactionResource\Widgets\TransactionOverview;
 use App\Models\Transaction;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
@@ -35,7 +36,9 @@ class TransactionResource extends Resource
 
     protected static ?string $model = Transaction::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'تراکنش ها';
+
+    protected static ?string $navigationIcon = 'heroicon-o-banknotes';
 
     public static function form(Form $form): Form
     {
@@ -48,16 +51,17 @@ class TransactionResource extends Resource
                     ->createOptionForm([
                         TextInput::make('name')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->label(__('name')),
                         Select::make('type')
                             ->options([
-                                'Asset' => 'Asset',
-                                'Liability' => 'Liability',
-                                'Equity' => 'Equity',
-                                'Income' => 'Income',
-                                'Expense' => 'Expense'
+                                'مشتری' => 'مشتری',
+                                'تولید کننده' => 'تولید کننده',
+                                'کارمند' => 'کارمند',
+                                'صاحبان سهام' => 'صاحبان سهام',
                             ])
                             ->required()
+                            ->label(__('type'))
                     ])
                     ->required()
                     ->label(__('account')),
@@ -68,10 +72,12 @@ class TransactionResource extends Resource
                     ->createOptionForm([
                         TextInput::make('bank_name')
                             ->required()
-                            ->maxLength(255),
+                            ->maxLength(255)
+                            ->label(__('bank')),
                         TextInput::make('balance')
                             ->numeric()
                             ->required()
+                            ->label(__('balance'))
                     ])
                     ->required()
                     ->label(__('bank')),
@@ -180,6 +186,13 @@ class TransactionResource extends Resource
             'index' => Pages\ListTransactions::route('/'),
             'create' => Pages\CreateTransaction::route('/create'),
             'edit' => Pages\EditTransaction::route('/{record}/edit'),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            TransactionOverview::class,
         ];
     }
 }

@@ -10,13 +10,5 @@ class CreateBankCheck extends CreateRecord
 {
     protected static string $resource = BankCheckResource::class;
 
-    use CreateRecord\Concerns\Translatable;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\LocaleSwitcher::make(),
-            // ...
-        ];
-    }
+    
 }

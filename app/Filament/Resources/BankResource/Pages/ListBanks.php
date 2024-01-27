@@ -8,15 +8,15 @@ use Filament\Resources\Pages\ListRecords;
 
 class ListBanks extends ListRecords
 {
-    use ListRecords\Concerns\Translatable;
 
     protected static string $resource = BankResource::class;
+
+    protected static ?string $title = 'بانک ها';
 
     protected function getHeaderActions(): array
     {
         return [
             Actions\CreateAction::make(),
-            Actions\LocaleSwitcher::make(),
         ];
     }
 }

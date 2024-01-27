@@ -10,13 +10,4 @@ class CreateTransaction extends CreateRecord
 {
     protected static string $resource = TransactionResource::class;
 
-    use CreateRecord\Concerns\Translatable;
-
-    protected function getHeaderActions(): array
-    {
-        return [
-            Actions\LocaleSwitcher::make(),
-            // ...
-        ];
-    }
 }

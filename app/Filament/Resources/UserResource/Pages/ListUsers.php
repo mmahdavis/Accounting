@@ -8,15 +8,15 @@ use Filament\Resources\Pages\ListRecords;
 
 class ListUsers extends ListRecords
 {
-    use ListRecords\Concerns\Translatable;
 
     protected static string $resource = UserResource::class;
+
+    protected static ?string $title = 'کاربران';
 
     protected function getHeaderActions(): array
     {
         return [
             Actions\CreateAction::make(),
-            Actions\LocaleSwitcher::make(),
         ];
     }
 }

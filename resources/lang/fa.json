@@ -5,5 +5,13 @@
     "pay_date":"تاریخ",
     "amount":"مبلغ",
     "tax":"کارمزد",
-    "bank":"بانک"
+    "bank":"بانک",
+    "check_number":"شماره چک",
+    "description":"توضیحات",
+    "balance":"موجودی",
+    "start_date":"تاریخ شروع",
+    "end_date":"تاریخ پایان",
+    "total_transaction":"مجموع تراکنش ها",
+    "":"",
+    "":""
 }

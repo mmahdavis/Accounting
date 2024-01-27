@@ -6,6 +6,7 @@ use App\Filament\Resources\BankResource\Pages;
 use App\Filament\Resources\BankResource\RelationManagers;
 use App\Models\Bank;
 use Filament\Forms;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
@@ -21,13 +22,22 @@ class BankResource extends Resource
 
     protected static ?string $model = Bank::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationLabel = 'بانک ها';
+
+    protected static ?string $navigationIcon = 'heroicon-o-home-modern';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                TextInput::make('bank_name')
+                    ->required()
+                    ->maxLength(255)
+                    ->label(__('bank')),
+                TextInput::make('balance')
+                    ->numeric()
+                    ->required()
+                    ->label(__('balance'))
             ]);
     }
 

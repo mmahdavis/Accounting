@@ -11,6 +11,8 @@ use Filament\Forms\Components\Field;
 use Filament\Forms\Components\Placeholder;
 use Filament\Tables\Columns\Column;
 use Filament\Tables\Filters\BaseFilter;
+use Illuminate\Support\Facades\Schema;
+use Laravel\Fortify\Fortify;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,7 +21,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        Fortify::ignoreRoutes();
     }
 
     /**
@@ -27,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Schema::defaultStringLength(191);
         Model::unguard();
         LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
             $switch

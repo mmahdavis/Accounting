@@ -17,8 +17,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class UserResource extends Resource
 {
-    use Translatable;
-
     protected static ?string $model = User::class;
 
     protected static ?string $navigationLabel = 'کاربران';

@@ -32,7 +32,6 @@ use Illuminate\Support\Facades\Log;
 
 class TransactionResource extends Resource
 {
-    use Translatable;
 
     protected static ?string $model = Transaction::class;
 

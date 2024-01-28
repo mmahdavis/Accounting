@@ -18,8 +18,6 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class BankResource extends Resource
 {
-    use Translatable;
-
     protected static ?string $model = Bank::class;
 
     protected static ?string $navigationLabel = 'بانک ها';

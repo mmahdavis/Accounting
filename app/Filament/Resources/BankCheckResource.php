@@ -22,8 +22,6 @@ use Illuminate\Support\Facades\Date;
 
 class BankCheckResource extends Resource
 {
-    use Translatable;
-
     protected static ?string $model = BankCheck::class;
 
     protected static ?string $navigationLabel = 'چک ها';

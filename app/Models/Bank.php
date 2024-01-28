@@ -10,7 +10,6 @@ use Spatie\Translatable\HasTranslations;
 class Bank extends Model
 {
     use HasFactory;
-    use HasTranslations;
 
 
     public $translatable = [

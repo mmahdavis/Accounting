@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Translatable\HasTranslations;
 
-class Accounts extends Model
+class Accounts extends Model  implements FilamentUser
 {
     use HasFactory;
 
@@ -35,5 +37,10 @@ class Accounts extends Model
     public function bank_checks(): HasMany
     {
         return $this->hasMany(BankCheck::class);
+    }
+
+    public function canAccessPanel(Panel $panel): bool
+    {
+        return true;
     }
 }

@@ -27,7 +27,11 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('roles')
+                    ->relationship('roles', 'name')
+                    ->multiple()
+                    ->preload()
+                    ->searchable()
             ]);
     }
 

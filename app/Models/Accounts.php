@@ -19,6 +19,10 @@ class Accounts extends Model  implements FilamentUser
         'type'
     ];
 
+    protected $casts = [
+        'type' => 'array',
+    ];
+
     /**
      * Get all of the transaction for the Accounts
      *

@@ -14,6 +14,8 @@ use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
+use Filament\Resources\Pages\EditRecord;
+use Filament\Resources\Pages\Page;
 use Filament\Resources\Resource;
 use Filament\Support\RawJs;
 use Filament\Tables;
@@ -88,6 +90,7 @@ class TransactionResource extends Resource
                     ->maxDate(now())
                     ->label(__('pay_date')),
                 Select::make('type')
+                    ->disabledOn('edit')
                     ->options([
                         'واریز' => 'واریز',
                         'برداشت' => 'برداشت'

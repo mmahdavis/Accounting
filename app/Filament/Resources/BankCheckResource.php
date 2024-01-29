@@ -42,6 +42,7 @@ class BankCheckResource extends Resource
                             ->maxLength(255)
                             ->label(__('name')),
                         Select::make('type')
+                            ->multiple()
                             ->options([
                                 'مشتری' => 'مشتری',
                                 'تولید کننده' => 'تولید کننده',

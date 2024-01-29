@@ -13,6 +13,7 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -54,12 +55,21 @@ class AccountsResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->searchable()
                     ->label(__('name')),
                 TextColumn::make('type')
                     ->label(__('type')),
             ])
             ->filters([
-                //
+                SelectFilter::make('type')
+                    ->options([
+                        'مشتری' => 'مشتری',
+                        'تولید کننده' => 'تولید کننده',
+                        'کارمند' => 'کارمند',
+                        'صاحبان سهام' => 'صاحبان سهام',
+                        'هزینه' => 'هزینه',
+                    ])
+                    ->label(__('type')),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

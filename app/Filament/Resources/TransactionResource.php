@@ -133,6 +133,7 @@ class TransactionResource extends Resource
                     ->searchable()
                     ->label(__('amount')),
                 TextColumn::make('tax')
+                    ->summarize(Sum::make())
                     ->label(__('tax')),
                 TextColumn::make('bank.bank_name')
                     ->label(__('bank')),
@@ -164,7 +165,7 @@ class TransactionResource extends Resource
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    // Tables\Actions\DeleteBulkAction::make(),
                     ExportBulkAction::make()
                         ->exporter(TransactionExporter::class),
                 ]),

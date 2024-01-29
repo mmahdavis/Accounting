@@ -58,6 +58,7 @@ class TransactionResource extends Resource
                                 'تولید کننده' => 'تولید کننده',
                                 'کارمند' => 'کارمند',
                                 'صاحبان سهام' => 'صاحبان سهام',
+                                'هزینه' => 'هزینه',
                             ])
                             ->required()
                             ->label(__('type'))

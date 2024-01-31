@@ -12,6 +12,6 @@
     "start_date":"تاریخ شروع",
     "end_date":"تاریخ پایان",
     "total_transaction":"مجموع تراکنش ها",
-    "":"",
-    "":""
+    "total_income_transaction":"مجموع واریز",
+    "total_expose_transaction":"مجموع برداشت"
 }

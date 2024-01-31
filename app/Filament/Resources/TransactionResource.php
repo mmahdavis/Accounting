@@ -127,15 +127,18 @@ class TransactionResource extends Resource
                     ->searchable()
                     ->label(__('account')),
                 TextColumn::make('pay_date')
+                    ->jalaliDate()
                     ->sortable()
                     ->label(__('pay_date')),
                 TextColumn::make('type')
                     ->label(__('type')),
                 TextColumn::make('amount')
+                    ->money('irr')
                     ->summarize(Sum::make())
                     ->searchable()
                     ->label(__('amount')),
                 TextColumn::make('tax')
+                    ->money('irr')
                     ->summarize(Sum::make())
                     ->label(__('tax')),
                 TextColumn::make('bank.bank_name')

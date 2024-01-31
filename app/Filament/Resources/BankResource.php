@@ -44,10 +44,10 @@ class BankResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('bank_name'),
-                TextColumn::make('balance'),
+                TextColumn::make('balance')->money('irr'),
                 TextColumn::make('name'),
                 TextColumn::make('card_number'),
-                TextColumn::make('last_transaction_date'),
+                TextColumn::make('last_transaction_date')->jalaliDate(),
             ])
             ->filters([
                 //

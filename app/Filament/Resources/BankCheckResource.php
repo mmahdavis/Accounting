@@ -105,8 +105,8 @@ class BankCheckResource extends Resource
             ->columns([
                 TextColumn::make('account.name'),
                 TextColumn::make('bank.bank_name'),
-                TextColumn::make('amount'),
-                TextColumn::make('pey_date'),
+                TextColumn::make('amount')->money('irr'),
+                TextColumn::make('pey_date')->jalaliDate(),
                 TextColumn::make('description'),
                 TextColumn::make('check_number'),
                 TextColumn::make('type'),

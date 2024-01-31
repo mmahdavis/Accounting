@@ -22,28 +22,32 @@ class TransactionOverview extends BaseWidget
 
         return [
             Stat::make(
-                label: __('total_transaction'),
+                label: __('total_expose_transaction'),
                 value: Number::format(Transaction::query()
+                    ->when('برداشت', fn (Builder $query) => $query->where('type', 'برداشت'))
                     ->when($startDate, fn (Builder $query) => $query->whereDate('created_at', '>=', $startDate))
                     ->when($endDate, fn (Builder $query) => $query->whereDate('created_at', '<=', $endDate))
                     ->sum('amount')) . " ريال",
             )
                 ->chart(
                     Transaction::query()
+                        ->when('برداشت', fn (Builder $query) => $query->where('type', 'برداشت'))
                         ->when($startDate, fn (Builder $query) => $query->whereDate('created_at', '>=', $startDate))
                         ->when($endDate, fn (Builder $query) => $query->whereDate('created_at', '<=', $endDate))->pluck('amount')->toArray()
                 )
                 ->color('success'),
 
             Stat::make(
-                label: __('total_transaction'),
+                label: __('total_income_transaction'),
                 value: Number::format(Transaction::query()
+                    ->when('واریز', fn (Builder $query) => $query->where('type', 'واریز'))
                     ->when($startDate, fn (Builder $query) => $query->whereDate('created_at', '>=', $startDate))
                     ->when($endDate, fn (Builder $query) => $query->whereDate('created_at', '<=', $endDate))
                     ->sum('amount')) . " ريال",
             )
                 ->chart(
                     Transaction::query()
+                        ->when('واریز', fn (Builder $query) => $query->where('type', 'واریز'))
                         ->when($startDate, fn (Builder $query) => $query->whereDate('created_at', '>=', $startDate))
                         ->when($endDate, fn (Builder $query) => $query->whereDate('created_at', '<=', $endDate))->pluck('amount')->toArray()
                 )
